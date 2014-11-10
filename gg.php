@@ -20,9 +20,9 @@ class gg
 
     public function generateLog($cible)
     {
-        exec('git clone https://github.com/'.$cible.' /tmp/test');
+        exec('git clone git@github.com:'.$cible.' /tmp/test');
         chdir('/tmp/test');
-        exec('git log --all | grep commit | awk \'{print $2}\' | xargs -l > /tmp/toto.txt');
+        exec('git log --all | grep \'^commit\' | awk \'{print $2}\' | xargs -l > /tmp/toto.txt');
         exec('git log --merges --all > /tmp/merged.txt');
     }
 
